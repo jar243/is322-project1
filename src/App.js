@@ -9,18 +9,22 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
 
         <Header />
 
         <Switch>
-          <Route exact path="/"> <Redirect to="/landing-page" /> </Route>
-          <Route exact path="/landing-page" component={LandingPage} />
-          <Route exact path="/product-list">
+
+          <Route path='/landing-page' component={LandingPage} />
+
+          <Route path='/product-list'>
             <ProductList
               products={mockProductData}
             />
           </Route>
+
+          <Route path="/"> <Redirect to="/landing-page" /> </Route>
+
         </Switch>
 
         <Footer />
