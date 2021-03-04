@@ -9,7 +9,7 @@ function getAllProducts() {
     },
     {
       "id": 1,
-      "name": "Preppy Neoprene Coozie",
+      "name": "Neoprene Coozie",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae nibh gravida, mollis enim sed, ultrices ligula.",
       "price": 999.99,
       "imagePath": "/products/coozie.jpg"
@@ -20,8 +20,22 @@ function getAllProducts() {
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae nibh gravida, mollis enim sed, ultrices ligula.",
       "price": 0.23,
       "imagePath": "/products/fork.jpg"
-    }
+    },
+    {
+      "id": 3,
+      "name": "Solid Gold Bar",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae nibh gravida, mollis enim sed, ultrices ligula.",
+      "price": 168.83,
+      "imagePath": "/products/gold.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Fireplace",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae nibh gravida, mollis enim sed, ultrices ligula.",
+      "price": 11111.11,
+      "imagePath": "/products/fireplace.jpg"
+    },
   ]
-} 
+}
 
 export default getAllProducts

@@ -1,25 +1,15 @@
 import React from "react";
 import Container from 'react-bootstrap/Container'
-import CardColumns from 'react-bootstrap/CardColumns'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Form from 'react-bootstrap/Form'
+import Dropdown from 'react-bootstrap/Dropdown'
 
-const ProductList = ({ products }) => (
-  <Container>
-    <CardColumns>
-      {
-        products.map((product, index) => (
-          <ProductCard
-            product={product}
-          />
-        ))
-      }
-    </CardColumns>
-  </Container>
-)
 
 const ProductCard = ({ product }) => (
-  <Card id={product.id}>
+  <Card className='shadow-sm'>
     <Card.Img variant="top" src={process.env.PUBLIC_URL + product.imagePath} />
     <Card.Body>
       <Card.Title>{product.name}</Card.Title>
@@ -30,4 +20,69 @@ const ProductCard = ({ product }) => (
   </Card>
 );
 
-export default ProductList;
+
+const ProductList = ({ products }) => (
+  <Row>
+    {
+      products.map((product, index) => (
+        <Col md={4} className='mb-3' id={product.id}>
+          <ProductCard
+            product={product}
+          />
+        </Col>
+      ))
+    }
+  </Row>
+)
+
+
+class ProductPage extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.products = props.products
+    this.state = {
+      search: "",
+      maxPrice: 99999999
+    };
+  }
+
+  /*changeSearch = () => {
+    this.setState({});
+  }*/
+
+  render() {
+    return (
+      <Container>
+        <Row>
+          <Col className='mb-3' md={3}>
+
+            <Form.Control className='mb-2' placeholder="Search products..." />
+
+            <Dropdown>
+              <Dropdown.Toggle variant="secondary" id="sort-by">
+                Sort By
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item>Highest Price</Dropdown.Item>
+                <Dropdown.Item>Lowest Price</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+
+          </Col>
+
+          <Col md={9}>
+            <ProductList
+              products={this.products}
+            />
+          </Col>
+
+        </Row>
+      </Container>
+    )
+  }
+
+}
+
+
+export default ProductPage;

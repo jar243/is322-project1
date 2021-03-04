@@ -1,6 +1,6 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
-import { Header, LandingPage, ProductList, Footer } from "./components";
+import { HashRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import { Header, LandingPage, ProductPage, Footer } from "./components";
 import getAllProducts from "./db"
 
 function App() {
@@ -8,8 +8,7 @@ function App() {
   const mockProductData = getAllProducts()
 
   return (
-    <div className="App">
-      <Router basename={process.env.PUBLIC_URL}>
+      <Router>
 
         <Header />
 
@@ -18,7 +17,7 @@ function App() {
           <Route path='/landing-page' component={LandingPage} />
 
           <Route path='/product-list'>
-            <ProductList
+            <ProductPage
               products={mockProductData}
             />
           </Route>
@@ -30,7 +29,6 @@ function App() {
         <Footer />
 
       </Router>
-    </div>
   )
 
 }
